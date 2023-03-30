@@ -1,3 +1,35 @@
+
+Skip to content
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+@darkironjeki
+darkironjeki /
+learning-terraform-3087701
+Public
+forked from LinkedInLearning/learning-terraform-3087701
+
+Cannot fork because you own this repository and are not a member of any organizations.
+
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+
+    Settings
+
+learning-terraform-3087701/main.tf
+@samuelson
+samuelson 04_02 solutions
+Latest commit 54810cc Sep 7, 2022
+History
+1 contributor
+94 lines (73 sloc) 1.93 KB
 data "aws_ami" "app_ami" {
   most_recent = true
 
@@ -31,27 +63,27 @@ module "blog_vpc" {
   }
 }
 
-module "autoscaling" {
-  source  = "terraform-aws-modules/autoscaling/aws"
-  version = "6.9.0"
-  
-  name     = "blog"
-  min_size = 1
-  max_size = 2
 
+module "blog_autoscaling" {
+  source  = "terraform-aws-modules/autoscaling/aws"
+  version = "6.5.2"
+
+  name = "blog"
+
+  min_size            = 1
+  max_size            = 2
   vpc_zone_identifier = module.blog_vpc.public_subnets
   target_group_arns   = module.blog_alb.target_group_arns
   security_groups     = [module.blog_sg.security_group_id]
-
-  image_id      = data.aws_ami.app_ami.id
-  instance_type = var.instance_type
+  instance_type       = var.instance_type
+  image_id            = data.aws_ami.app_ami.id
 }
 
 module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
-  version = "~> 8.0"
+  version = "~> 6.0"
 
-  name = "my-alb"
+  name = "blog-alb"
 
   load_balancer_type = "application"
 
@@ -92,3 +124,20 @@ module "blog_sg" {
   egress_rules = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+learning-terraform-3087701/main.tf at 04_02 · darkironjeki/learning-terraform-3087701
