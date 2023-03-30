@@ -1,35 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
-@darkironjeki
-darkironjeki /
-learning-terraform-3087701
-Public
-forked from LinkedInLearning/learning-terraform-3087701
-
-Cannot fork because you own this repository and are not a member of any organizations.
-
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-learning-terraform-3087701/main.tf
-@samuelson
-samuelson 04_02 solutions
-Latest commit 54810cc Sep 7, 2022
-History
-1 contributor
-94 lines (73 sloc) 1.93 KB
 data "aws_ami" "app_ami" {
   most_recent = true
 
@@ -124,20 +92,3 @@ module "blog_sg" {
   egress_rules = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-learning-terraform-3087701/main.tf at 04_02 · darkironjeki/learning-terraform-3087701
